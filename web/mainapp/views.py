@@ -1,4 +1,4 @@
-from flask import Flask, render_template, url_for
+from flask import Flask, render_template, url_for, request
 
 app = Flask(__name__)
 
@@ -6,10 +6,15 @@ app = Flask(__name__)
 @app.route("/accueil")
 def index():
     return render_template('accueil.html')
-    
+      
 @app.route("/reseau", methods=['GET', 'POST'])
 def reseau():
-    return render_template('reseau.html')
+	if request.method == 'POST':
+		if request.form['IPstatique']and request.form['MASQUEstatique'] and request.form['DNSstatique']:
+			return "validation"
+		else:
+			return "unvalide"
+	return render_template('reseau.html')
     #https://openclassrooms.com/fr/courses/1654786-creez-vos-applications-web-avec-flask/1655474-lechange-de-donnees
     
 @app.route("/serveur")
