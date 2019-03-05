@@ -5,54 +5,53 @@
 
 {% block reseau %}
 
-  <main class="container">
-<section class="movies" id="movies">
-    <h2>Featured Movies</h2>
-	<div class="row">
-		<div class="col-lg-3 col-md-4 col-sm-6">
-			<article class="card">
-				<header class="title-header">
-					<h3>Movie Title</h3>
-				</header>
-				<div class="card-block">
-					<div class="img-card">
-						<img src="//placehold.it/300x250" alt="Movie" class="w-100" />
-					</div>
-					<p class="tagline card-text text-xs-center">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-					<a href="#" class="btn btn-primary btn-block"><i class="fa fa-eye"></i> Watch Now</a>
-				</div>
-			</article>
-		</div>
-		<div class="col-lg-3 col-md-4 col-sm-6">
-    		<article class="card">
-				<header class="title-header">
-					<h3>Movie Title</h3>
-				</header>
-				<div class="card-block">
-					<div class="img-card">
-						<img src="https://placehold.it/300x250" alt="Movie" class="w-100" />
-					</div>
-					<p class="tagline card-text text-xs-center">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-					<a href="#" class="btn btn-primary btn-block"><i class="fa fa-eye"></i> Watch Now</a>
-				</div>
-			</article>
-		</div>
-        <div class="col-lg-3 col-md-4 col-sm-6">
-    		<article class="card">
-				<header class="title-header">
-					<h3>Movie Title</h3>
-				</header>
-				<div class="card-block">
-					<div class="img-card">
-						<img src="https://placehold.it/300x250" alt="Movie" class="w-100" />
-					</div>
-					<p class="tagline card-text text-xs-center">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-					<a href="#" class="btn btn-primary btn-block"><i class="fa fa-eye"></i> Watch Now</a>
-				</div>
-			</article>
-		</div>
-	</div>
-</section>
+<h1 class="text-center">Votre configuration</h1>
+<main role="main" class="container">
+  <div class="jumbotron">
+    
+  </div>
 </main>
+
+<h2 class="text-center">WIFI</h2>
+<main role="main" class="container col-lg-4 ">
+  <div class="jumbotron">
+    
+  </div>
+</main>
+
+<h2 class="text-center">ETHERNET</h2>
+<main role="main" class="container col-lg-4 ">
+  <div class="jumbotron">
+    
+<form method="post">
+  <div class="form-group row">
+    <label for="inputIPstatique" class="col-lg-4 col-form-label">Adresse IP*</label>
+    <div class="col-sm-7">
+      <input class="form-control" id="inputIPstatique" placeholder="ex : 192.168.1.18">
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="inputMasquestatique" class="col-lg-4 col-form-label">Masque*</label>
+    <div class="col-sm-7">
+      <input class="form-control" id="inputMasquestatique" placeholder="ex : 255.255.255.0">
+    </div>
+  </div>
+  <div class="form-group row">
+    <label for="inputDNSstatique" class="col-lg-4 col-form-label">DNS</label>
+    <div class="col-sm-7">
+      <input class="form-control" id="inputDNStatique" placeholder="ex : 8.8.8.8">
+    </div>
+  </div>
+
+  <div class="form-group row text-center">
+    <div class="col-sm-10">
+      <button type="submit" class="btn btn-primary btn-lg col-lg-10">Activer</button>
+    </div>
+  </div>
+</form>
+
+  </div>
+</main>
+
 
 {% endblock %}

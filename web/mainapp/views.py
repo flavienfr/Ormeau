@@ -7,9 +7,10 @@ app = Flask(__name__)
 def index():
     return render_template('accueil.html')
     
-@app.route("/reseau")
+@app.route("/reseau", methods=['GET', 'POST'])
 def reseau():
     return render_template('reseau.html')
+    #https://openclassrooms.com/fr/courses/1654786-creez-vos-applications-web-avec-flask/1655474-lechange-de-donnees
     
 @app.route("/serveur")
 def serveur():
