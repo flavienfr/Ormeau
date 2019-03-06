@@ -10,8 +10,10 @@ def index():
 @app.route("/reseau", methods=['GET', 'POST'])
 def reseau():
 	if request.method == 'POST':
-		if request.form['IPstatique']and request.form['MASQUEstatique'] and request.form['DNSstatique']:
-			return "validation"
+		if request.form['IPstatique']and request.form['MASQUEstatique']:
+			IPstatique = request.form['IPstatique']
+			MASQUEstatique = request.form['MASQUEstatique']
+			return "valide IP :"+ IPstatique + "masque :" + MASQUEstatique
 		else:
 			return "unvalide"
 	return render_template('reseau.html')
