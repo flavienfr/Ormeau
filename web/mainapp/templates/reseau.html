@@ -8,7 +8,8 @@
 <h1 class="text-center">Votre configuration</h1>
 <main role="main" class="container">
   <div class="jumbotron">
-    
+    <p class="text-center">Adresse IP / Adresse masque : {{
+     ip }} / {{ masque }}</p>
   </div>
 </main>
 
@@ -33,7 +34,7 @@
   <div class="form-group row">
     <label for="inputMasquestatique" class="col-lg-4 col-form-label">Masque</label>
     <div class="col-sm-7">
-      <input class="form-control" name="MASQUEstatique" id="inputMasquestatique" placeholder="ex : 255.255.255.0">
+      <input class="form-control" name="MASQUEstatique" maxlength="2" id="inputMasquestatique" placeholder="ex : 24">
     </div>
   </div>
   <!-- 
