@@ -10,10 +10,15 @@ byte add;
 float tmp;
 float debit;
 int crc;
+String str;
+char lu;
 
 void setup() {
-  Serial.begin(9600);
+  Serial.begin(19200); //communication local
   while (!Serial);
+
+  Serial1.begin(9600);//communication vers la raspberry
+  while (!Serial1);
 
   LoRa.setPins(csPin, resetPin, irqPin);
   Serial.println("LoRa Receiver");
@@ -47,7 +52,7 @@ void loop() {
     }
 
     crc = 0;
-    for (int x=0; x < packetSize;x++)
+    for (int x=0; x < packetSize-1;x++)
     {
       for (int j=0; j<8; j++)
       {
@@ -55,8 +60,8 @@ void loop() {
       }
     }
 
-    
-    if(recv[1]==1)//code fonction (all) et crc calculé == crc recu
+    //code de fonction
+    if(recv[1]==1)//code fonction (all) & recv[packetSize-1] == crc
     {
       add = recv[0];
       tmp = (recv[2]+recv[3]);
@@ -74,5 +79,18 @@ void loop() {
       Serial.print("crc calculé: ");
       Serial.println(crc);
     }
+    String addchar = String(add);
+    String tmpchar = String(tmp);
+    String debitchar = String(debit);
+    str = ";"+ addchar + ";" + tmpchar + ";" + debitchar;
+
+    //envois valeur à la raspberry réception ok ou valeur
+    Serial1.println(str);
+    while(Serial.available()) 
+    {
+         lu = Serial.read();
+    }
+    Serial.println("Reception : ");
+    Serial.print(lu);
   }
 }
