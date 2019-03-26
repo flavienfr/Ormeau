@@ -11,7 +11,6 @@ float tmp;
 float debit;
 int crc;
 String str;
-char lu;
 
 void setup() {
   Serial.begin(19200); //communication local
@@ -83,14 +82,40 @@ void loop() {
     String tmpchar = String(tmp);
     String debitchar = String(debit);
     str = ";"+ addchar + ";" + tmpchar + ";" + debitchar;
+    Serial1.println(str);
 
     //envois valeur à la raspberry réception ok ou valeur
-    Serial1.println(str);
-    while(Serial.available()) 
+    if(verification() == 1)
     {
-         lu = Serial.read();
+      for(int i = 0;verification() == 1 & i<5;i++)//fair en sorte de pouvoir quitter la boucle si trop long.
+      {
+        Serial1.println(str);
+        delay(2000);
+      }  
     }
-    Serial.println("Reception : ");
-    Serial.print(lu);
+  }
+}
+
+int verification()
+{
+  int lu = 0;
+  delay(500);
+  while(Serial1.available())
+  {
+    lu = Serial1.read();
+  }
+  if(lu == 123)
+  {
+    Serial.println("Réponse Raspberry");
+    return 0;
+  }
+  else if(lu == 234)//code à définir si message mauvais
+  {
+    return 1;
+  }
+  else
+  {
+    Serial.println("Erreur Raspberry");
+    return 1;
   }
 }
