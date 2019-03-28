@@ -6,10 +6,10 @@ const int resetPin = 6;
 const int irqPin = 2;  
 
 byte recv[255];
+byte snd[255];
 byte add;
 float tmp;
 float debit;
-int crc;
 String str;
 
 void setup() {
@@ -50,7 +50,7 @@ void loop() {
       i++;
     }
 
-    crc = 0;
+    int crc = 0;
     for (int x=0; x < packetSize-1;x++)
     {
       for (int j=0; j<8; j++)
@@ -60,7 +60,7 @@ void loop() {
     }
 
     //code de fonction
-    if(recv[1]==1)//code fonction (all) & recv[packetSize-1] == crc
+    if(recv[1]==1/*& recv[packetSize-1] == crc*/)//code fonction (all)
     {
       add = recv[0];
       tmp = (recv[2]+recv[3]);
@@ -77,12 +77,32 @@ void loop() {
       Serial.println(debit);
       Serial.print("crc calculé: ");
       Serial.println(crc);
+
+
+      //réponse positice à pierre
+      snd[0] = add;
+      snd[1] = 1; //-------------> code fontion donné par l'utilisateur sur IHM 
+      int crc = 0;
+      for (int x=0; x < 1;x++)
+      {
+        for (int j=0; j<8; j++)
+        {
+          crc += snd[x]>>j & 0x01;
+        }
+      }
+      snd[2] = crc;
+      
+      LoRa.beginPacket();​
+      LoRa.write(snd,2);​
+      LoRa.endPacket();
+
+      String addchar = String(add);
+      String tmpchar = String(tmp);
+      String debitchar = String(debit);
+      str = ";"+ addchar + ";" + tmpchar + ";" + debitchar;
+      Serial1.println(str);
     }
-    String addchar = String(add);
-    String tmpchar = String(tmp);
-    String debitchar = String(debit);
-    str = ";"+ addchar + ";" + tmpchar + ";" + debitchar;
-    Serial1.println(str);
+    
 
     //envois valeur à la raspberry réception ok ou valeur
     if(verification() == 1)
