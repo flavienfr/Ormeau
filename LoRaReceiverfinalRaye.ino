@@ -6,7 +6,8 @@ const int resetPin = 6;
 const int irqPin = 2;  
 
 byte recv[255];
-byte snd[255];
+byte snd[10];
+
 byte add;
 float tmp;
 float debit;
@@ -80,8 +81,8 @@ void loop() {
 
 
       //réponse positice à pierre
-      snd[0] = add;
-      snd[1] = 1; //-------------> code fontion donné par l'utilisateur sur IHM 
+      snd[0] = byte(add);
+      snd[1] = byte(1); //-------------> code fontion donné par l'utilisateur sur IHM 
       int crc = 0;
       for (int x=0; x < 1;x++)
       {
@@ -90,11 +91,12 @@ void loop() {
           crc += snd[x]>>j & 0x01;
         }
       }
-      snd[2] = crc;
-      
-      LoRa.beginPacket();​
-      LoRa.write(snd,2);​
+      snd[2] = byte(crc);
+
+      LoRa.beginPacket();
+      LoRa.write(snd,2);
       LoRa.endPacket();
+  
 
       String addchar = String(add);
       String tmpchar = String(tmp);
