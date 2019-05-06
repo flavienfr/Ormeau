@@ -1,58 +1,26 @@
 <!DOCTYPE html>
 
-{% extends 'base.html' %}
-
+{% extends 'base.html' %}	
 
 {% block accueil %}
-  <main class="container">
-<section class="movies" id="movies">
-    <h2>Featured Movies</h2>
-	<div class="row">
-		<div class="col-lg-3 col-md-4 col-sm-6">
-			<article class="card">
-				<header class="title-header">
-					<h3>Movie Title</h3>
-				</header>
-				<div class="card-block">
-					<div class="img-card">
-						<img src="//placehold.it/300x250" alt="Movie" class="w-100" />
-					</div>
-					<p class="tagline card-text text-xs-center">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-					<a href="#" class="btn btn-primary btn-block"><i class="fa fa-eye"></i> Watch Now</a>
-				</div>
-			</article>
+	<section>
+		<div class="category">
+			<h1>Réseau</h1>
+			<a href="/reseau"><img src="static/img/connexion.jpg" alt="reseau"/></a>
+			<p>Gestionnaire des paramètres réseau de la carte de communication</p>
 		</div>
-		<div class="col-lg-3 col-md-4 col-sm-6">
-    		<article class="card">
-				<header class="title-header">
-					<h3>Movie Title</h3>
-				</header>
-				<div class="card-block">
-					<div class="img-card">
-						<img src="https://placehold.it/300x250" alt="Movie" class="w-100" />
-					</div>
-					<p class="tagline card-text text-xs-center">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-					<a href="#" class="btn btn-primary btn-block"><i class="fa fa-eye"></i> Watch Now</a>
-				</div>
-			</article>
+	
+		<div class="category">
+			<h1>Serveur de donnée</h1>
+			<a href="/serveur"><img src="static/img/db.png" alt="serveur de donnée"/></a>
+			<p>Gestionnaire des paramètres de connexion de votre serveur de donnée.</p>
 		</div>
-        <div class="col-lg-3 col-md-4 col-sm-6">
-    		<article class="card">
-				<header class="title-header">
-					<h3>Movie Title</h3>
-				</header>
-				<div class="card-block">
-					<div class="img-card">
-						<img src="https://placehold.it/300x250" alt="Movie" class="w-100" />
-					</div>
-					<p class="tagline card-text text-xs-center">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-					<a href="#" class="btn btn-primary btn-block"><i class="fa fa-eye"></i> Watch Now</a>
-				</div>
-			</article>
+
+		<div class="category">
+			<h1>Support</h1>
+			<a href="/support"><img src="static/img/support.jpg" alt="support"/></a>
+			<p>Vous pouvez nous contacter ici pour toutes questions ou problèmes rencontrés.</p>
 		</div>
-	</div>
-</section>
-</main>
+
+	</section>
 {% endblock %}
-
-

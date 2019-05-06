@@ -36,17 +36,17 @@ def LireIprouters() :
 	fichierR = open("/home/pi/ormeau/web/mainapp/dhcptest.conf", "r")
 	contenu = fichierR.read()
 
-	ipdebut = contenu.find("static routers=")
-	ipdebut += 15
+	ipRdebut = contenu.find("static routers=")
+	ipRdebut += 15
 	i = 0
-	ip = ""
-	while contenu[ipdebut+i] != "#":
-		ip += contenu[ipdebut+i]
+	ipR = ""
+	while contenu[ipRdebut+i] != "#": #!!!!Mettre hashtag dans le .conf!!!
+		ipR += contenu[ipRdebut+i]
 		i+=1
-	ipfin = ipdebut+i+1
+	ipRfin = ipRdebut+i+1
 
 	fichierR.close()
-	return (ip, ipdebut, ipfin)
+	return (ipR, ipRdebut, ipRfin)
 
 def ChangerIProuters(newiprouter):
 	fichierR = open("/home/pi/ormeau/web/mainapp/dhcptest.conf", "r")
@@ -63,9 +63,12 @@ def ChangerIProuters(newiprouter):
 
 #Configuration dynamique
 
-ip, masque, ipdebut, ipfin = LireIpStatique()
-print ("Votre adresse ip :",ip,"Masque :",masque)
+#ip, masque, ipdebut, ipfin = LireIpStatique()
+#print ("Votre adresse ip :",ip,"Masque :",masque)
 #ChangerIProuters(newiprouter)
+
+ipR, ipRdebut, ipRfin =LireIprouters()
+print "Votre adresse ip :",ipR
 
 
 #confirmation = input("voulez vous sauvegarder (O/N)?")

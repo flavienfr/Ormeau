@@ -1,50 +1,70 @@
 <!DOCTYPE html>
-
-
 <html>
+<head>
+	<meta charset="utf-8"/>
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"/>
+	<title>Centre de paramétrage</title>
+</head>
+<body>
+	<div id="bloc_page">
 
-  <head>
-    <title>HTML</title>
-    <link rel="stylesheet" media="screen" href = "{{ url_for('static', filename='css/bootstrap.css') }}">
-  </head>
+	<header>
+		<div id="logo_titre">
+			<div id="logo">
+				<img src="static/img/logo.png" alt="logo d'un ormeau"/>
+			</div>
+			<div id="titre">
+				<h1>FRANCE HALIOTIS</h1>
+				<h2>l'ormeau breton de pleine mer</h2>
+			</div>
+		</div>
 
-  <body>
+		<nav>
+			<ul>
+				<li><a href="/accueil">Accueil</a></li>
+				<li><a href="/reseau">Réseau</a></li>
+				<li><a href="/serveur">Serveur de donnée</a></li>
+				<li><a href="/support">Support</a></li>
+			</ul>
+		</nav>
+	</header>
 
-  <div class="container text-center">
-    <h3>FRANCE HALIOTIS</h3>
-    <p><em>Paramètres et configuration</em></p>
-  </div> 
-
-  <nav class="navbar navbar-expand-md navbar-dark bg-dark row">
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="/accueil">Acceuil <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/reseau">Réseau</a>
-       </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/serveur">Serveur de donnée</a>
-       </li>
-        <li class="nav-item">
-         <a class="nav-link" href="/support">Support</a>
-       </li>
-     </ul>
-    </div>
-  </nav>
-
-
-
+	<div id="banner">
+		<div id="banner_description">
+			Bienvenue sur le centre de configuration
+		</div>
+	</div>
+	
 {% block accueil %}{% endblock %}
 {% block reseau %}{% endblock %}
 {% block serveur %}{% endblock %}
 {% block support %}{% endblock %}
 
+	<footer>
+		<div id="bloc_footer">
+			<div id="contact">
+				<h1>Nous contacter</h1>
+				<h2>Les élèves</h2>
+				<ul>
+					<li><a href="mailto:pierre@mail.com"><strong>Module de mesures:</strong> pierre@mail.com</a></li>
+					<li><a href="mailto:flavien@mail.com"><strong>Module de communication:</strong> flavien@mail.com</a></li>
+					<li><a href="mailto:pierre@mail.com"><strong>Module de visualisation:</strong> guillaume@mail.com</a></li>
+				</ul>
+				<h2>Le professeur</h2>
+				<ul>
+					<li><a href="mailto:prof@mail.com"><strong>M.Raye:</strong> prof@mail.com</a></li>
+				</ul>
+			</div>
+			<div id="link">
+				<h1>Liens</h1>
+				<ul>
+					<li><a href="https://www.abalonebretagne.com/" target="_blank">Site de France Holiotis</a></li>
+					<li><a href="#" target="_blank">Consultation des mesures</a></li>
+				</ul>
+			</div>
+		</div>
+	</footer>
 
-  </body>
+	</div>
+</body>
 </html>
