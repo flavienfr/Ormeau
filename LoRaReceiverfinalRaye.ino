@@ -97,11 +97,10 @@ void loop() {
       LoRa.write(snd,2);
       LoRa.endPacket();
   
-
       String addchar = String(add);
       String tmpchar = String(tmp);
       String debitchar = String(debit);
-      str = ";"+ addchar + ";" + tmpchar + ";" + debitchar;
+      str = ";1;"+ addchar + ";" + tmpchar + ";" + debitchar;
       Serial1.println(str);
     }
     
