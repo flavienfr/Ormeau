@@ -10,26 +10,34 @@ def index():
       
 @app.route("/reseau", methods=['GET', 'POST'])
 def reseau():
-	ip, masque, ipdebut, ipfin = LireIpStatique()
-	ipR, ipRdebut, ipRfin = LireIprouters()
-	if request.method == 'POST':
-		
-		if request.form['IPstatique']and request.form['MASQUEstatique'] and request.form['Route']:
-			IPstatique = request.form['IPstatique']
-			MASQUEstatique = request.form['MASQUEstatique']
-			Route = request.form['Route']
+	if request.method == 'POST' and request.form['formulaire'] == 'modifier ethernet':
+		if request.form['adIP']and request.form['masque'] and request.form['route']:
+			IPstatique = request.form['adIP']
+			MASQUEstatique = request.form['masque']
+			Route = request.form['route']
 			
 			ChangerIPstatique(IPstatique, MASQUEstatique)
 			ChangerIProuters(Route)
-			
-			ip, masque, ipdebut, ipfin = LireIpStatique()
-			ipR, ipRdebut, ipRfin = LireIprouters()
-			return render_template('reseau.html', ip=ip, masque=masque, ipR=ipR)
-			
-		
 		else:
-			return "unvalide"
-	return render_template('reseau.html')
+			return "unvalide"#pop-up java script eurreur		
+	elif request.method == 'POST' and request.form['formulaire'] == 'activer ethernet':
+		return "valide actE"
+			
+	elif request.method == 'POST' and request.form['formulaire'] == 'modifier wifi':
+		if request.form['ssid'] and request.form['mdp']:
+			newSSID = request.form['ssid']
+			newMDP = request.form['mdp']
+			
+			ModifierSSID(newSSID)
+			ModifierMDP(newMDP)
+		else:
+			return "unvalide"#pop-up java script eurreur		
+	elif request.method == 'POST' and request.form['formulaire'] == 'activer wifi':
+		return "actW"
+	
+	ip, masque, ipdebut, ipfin = LireIpStatique()
+	ipR, ipRdebut, ipRfin = LireIprouters()
+	return render_template('reseau.html', ip=ip, masque=masque, ipR=ipR)
     #https://openclassrooms.com/fr/courses/1654786-creez-vos-applications-web-avec-flask/1655474-lechange-de-donnees
     
 @app.route("/serveur")

@@ -4,76 +4,54 @@
 
 {% block accueil %}
 
-<h1 class="text-center">Votre configuration</h1>
-<main role="main" class="container">
-  <div class="jumbotron">
-    <p class="text-center">Adresse IP / Adresse masque : {{
-     ip }} / {{ masque }}</p>
-    <p class="text-center">Adresse reseau : {{ ipR }}</p>
-  </div>
-</main>
+<div id="conf"> 
+  <h2>Votre configuration</h2>
+  <p><em>Adresse IP/masque :</em> {{ ip }} / {{ masque }}</p>
+  <p><em>Adresse réseau :</em> {{ ipR }}</p>
+</div>
 
-<h2 class="text-center">WIFI</h2>
-<main role="main" class="container col-lg-4 ">
-  <div class="jumbotron">
-    
-  <form action="/reseau" method="POST">
-  <div class="form-group row">
-    <label for="inputSSID" class="col-lg-4 col-form-label">SSID</label>
-    <div class="col-sm-7">
-      <input class="form-control" name="SSID" id="inputSSID" placeholder="Nom de la box">
+<div id="connex"> 
+  <h2>Mode de connexion</h2>
+  <p><em>Vous êtes en</em> ethernet/wifi</p>
+
+  <div id="wifi_ethernet">
+    <div id="wifi">
+      <h2>WIFI</h2>
+      <form method="POST" action="#" >
+        <input type="submit" name="formulaire" value="activer wifi" class="btn"/>
+      </form>
+      <form method="POST" action="#">
+        <label for="ssid">SSID</label> <br/>
+            <input type="text" name="ssid" id="ssid" placeholder="ex : MonWifi"/>
+            <br/>
+            <label for="mdp">Mot de passe</label> <br/>
+            <input type="password" name="mdp" id="mdp"/>
+            <br/>
+            <input type="submit" name="formulaire" value="modifier wifi" class="btn"/>
+      </form>
+    </div>
+
+    <div id="ethernet">
+      <h2>ETHERNET</h2>
+      <form method="POST" action="/reseau">
+        <input type="submit" name="formulaire" value="activer ethernet" class="btn"/>
+      </form>
+      <form method="POST" action="/reseau">
+        <label for="adIP">Adresse IP</label> <br/>
+            <input type="text" name="adIP" id="adIP" placeholder="ex : 192.168.1.18" maxlength="15"/>
+            <br/>
+            <label for="Masque">Masque</label> <br/>
+            <input type="number" name="masque" id="masque" placeholder="ex : 24" min="0" max="25"/>
+            <br/>
+            <label for="route">Route par défaut</label> <br/>
+            <input type="text" name="route" id="route" placeholder="ex : 192.168.1.1" maxlength="15"/>
+            <br/>
+            <input type="submit" name="formulaire" value="modifier ethernet" class="btn"/>
+      </form>
     </div>
   </div>
-  <div class="form-group row">
-    <label for="inputMotDePasse" class="col-lg-4 col-form-label">Mot de passe</label>
-    <div class="col-sm-7">
-      <input class="form-control" name="MotDePasse" id="inputMotDePasse" placeholder="Clé WPA-WEP">
-    </div>
-  </div>
-  <div class="form-group row text-center">
-    <div class="col-sm-10">
-      <button type="submit" class="btn btn-primary btn-lg col-lg-10">Activer</button>
-    </div>
-  </div>
-  </form>
-
-
-  </div>
-</main>
-
-<h2 class="text-center">ETHERNET</h2>
-<main role="main" class="container col-lg-4 ">
-  <div class="jumbotron">
-    
-<form action="/reseau" method="POST">
-  <div class="form-group row">
-    <label for="inputIPstatique" class="col-lg-4 col-form-label">Adresse IP</label>
-    <div class="col-sm-7">
-      <input class="form-control" name="IPstatique" maxlength="15" id="inputIPstatique" placeholder="ex : 192.168.1.18">
-    </div>
-  </div>
-  <div class="form-group row">
-    <label for="inputMasquestatique" class="col-lg-4 col-form-label">Masque</label>
-    <div class="col-sm-7">
-      <input class="form-control" name="MASQUEstatique" maxlength="2" id="inputMasquestatique" placeholder="ex : 24">
-    </div>
-  </div>
-  <div class="form-group row">
-    <label for="inputRoute" class="col-lg-4 col-form-label">Route par défault</label>
-    <div class="col-sm-7">
-      <input class="form-control" name="Route" maxlength="15" id="inputRoute" placeholder="ex : 192.168.1.1">
-    </div>
-  </div>
-
-
-  <div class="form-group row text-center">
-    <div class="col-sm-10">
-      <button type="submit" class="btn btn-primary btn-lg col-lg-10">Activer</button>
-    </div>
-  </div>
-</form>
-
-  </div>
-</main>
+</div>
 
 {% endblock %}
+
+
