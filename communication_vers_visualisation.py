@@ -1,3 +1,4 @@
+
 import serial
 import mysql.connector 
 import string #enlever ?
@@ -30,8 +31,5 @@ while True:
 			valeurs = (add,tmp,debit)
 	
 			cursor.execute(requete,valeurs)
-
 			conn.commit()
-
 			conn.close()
-		
