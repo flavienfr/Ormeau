@@ -35,9 +35,17 @@ def reseau():
 	elif request.method == 'POST' and request.form['formulaire'] == 'activer wifi':
 		return "actW"
 	
+	elif request.method == 'POST' and request.form['formulaire'] == 'modifier IP serveur':
+		if request.form['ipserveur'] :
+			newIPserv = request.form['ipserveur']
+			ModifierServeur(newIPserv)
+			return "modifier IP serveur"
+		else:
+			return "unvalide"#pop-up java script eurreur
 	ip, masque, ipdebut, ipfin = LireIpStatique()
 	ipR, ipRdebut, ipRfin = LireIprouters()
-	return render_template('reseau.html', ip=ip, masque=masque, ipR=ipR)
+	contenu, IPserv = LireServeur()
+	return render_template('reseau.html', ip=ip, masque=masque, ipR=ipR, IPserv=IPserv)
     #https://openclassrooms.com/fr/courses/1654786-creez-vos-applications-web-avec-flask/1655474-lechange-de-donnees
     
 @app.route("/serveur")

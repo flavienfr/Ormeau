@@ -14,6 +14,13 @@ def LireIpStatique() :
 		i+=1
 	ipfin = ipdebut+i+1
 	masque = contenu[ipfin:ipfin+2]
+	
+	i = 0
+	masque = ""
+	while contenu[ipfin+i] != "#":
+		masque += contenu[ipfin+i]
+		i+=1
+
 
 	fichierR.close()
 	return (ip, masque, ipdebut, ipfin)

@@ -1,0 +1,207 @@
+body
+{
+	background: url("/static/img/background-wood.jpg");
+	background-repeat: no-repeat; 
+	background-attachment: fixed;
+	background-position: center;
+	background-size: cover;
+}
+#bloc_page
+{
+	background-color: rgb(156,188,204);
+	width:900px;
+	margin: auto;
+}
+header
+{
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-end;
+}
+#logo_titre
+{
+	display: flex;
+	align-items: center;
+}
+#logo img
+{
+	width:115px;
+	height:121px;
+}
+#titre
+{
+	margin: 0 0 0 0.5em;
+	text-align: center;
+}
+#titre h1
+{
+	font-size: 2em;
+	font-weight: normal;
+	/*border:1px solid black;*/
+}
+#titre h2
+{
+	font-size: 1.5em;
+	font-weight: normal;
+}
+
+/* Navigation */
+nav ul
+{
+	list-style-type: none;
+	display: flex;
+}
+nav li
+{
+	margin-right: 15px
+}
+nav a
+{
+	font-size: 1.3em;
+	color: black;
+	text-decoration: none;
+}
+nav a:hover, footer a:hover
+{
+	color: rgb(100,204,252);
+	background-color: black;
+}
+/* banner */
+#banner
+{
+	height: 236px;
+	background:url("/static/img/banner.png") no-repeat;
+	position: relative; /*permet de placer en absolu la descrition*/
+	box-shadow: 0px 4px 4px black;
+	margin-bottom: 25px;
+}
+#banner_description
+{
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	background-color: rgb(0,0,0,0.8);
+	padding:10px 70px 10px 70px;
+	border-radius: 5px 0 0 5px;
+	color: rgb(100,204,252);
+	font-size: 1.3em;
+}
+/* section */
+section
+{
+	display: flex;
+	justify-content:space-around;
+}
+.category
+{
+	width: 275px;
+	margin-top:50px;
+	border:3px solid black;
+	background-color: black;
+	border-radius: 30px;
+}
+.category a:hover 
+{
+	opacity: 0.5;
+}
+.category h1
+{
+	color: rgb(100,204,252);
+	text-align: center;
+}
+.category p
+{
+	text-align: center;
+	color: rgb(100,204,252);
+	margin: 5px 20px 5px 20px;
+}
+.category img
+{
+	width: 275px;
+	height: 200px;
+}
+/* footer */
+footer
+{
+	margin-top:75px; 
+	border-top:3px solid black;
+}
+#bloc_footer
+{
+	display: flex;
+	justify-content:space-around;
+}
+footer h1
+{
+	font-size: 1.6em;
+	border-bottom: 2px solid black;
+}
+footer h2
+{
+	font-size: 1.3em;
+}
+#contact ul
+{
+	list-style-type: none;
+}
+#link ul
+{
+	list-style-image: url(/static/img/clic.png);
+}
+footer a
+{
+	text-decoration: none;
+	color:black;
+}
+
+@media all and (max-width: 940px)
+{
+	#bloc_page
+	{
+		width: auto;
+	}
+	nav
+	{
+		width: auto;
+		text-align: left;
+	}
+	nav ul
+	{
+		flex-direction: column;
+		list-style-type:square;
+	}
+	nav a
+	{
+		font-size: 1.2em;
+	}
+	#banner
+	{
+		display: none;
+	}
+	header
+	{
+		border-bottom:3px solid black;
+	}
+	section
+	{
+		flex-direction: column;
+		align-items:center;
+	}
+	footer
+	{
+		display: flex;
+		justify-content: space-around;
+	}
+	#bloc_footer
+	{
+		flex-direction: column;
+	}
+	footer h1
+	{
+		font-size: 1.4em;
+	}
+	footer h2
+	{
+		font-size: 1.2em;
+	}
+}
