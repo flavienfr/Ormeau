@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<link rel="stylesheet" href="reseau_css.css"/>
+	<title>Centre de paramétrage</title>
+</head>
+<body>
+	<div id="bloc_page">
+
+	<header>
+		<div id="logo_titre">
+			<div id="logo">
+				<img src="static/img/logo.png" alt="logo d'un ormeau"/>
+			</div>
+			<div id="titre">
+				<h1>FRANCE HALIOTIS</h1>
+				<h2>l'ormeau breton de pleine mer</h2>
+			</div>
+		</div>
+
+		<nav>
+			<ul>
+				<li><a href="/accueil">Accueil</a></li>
+				<li><a href="/reseau">Réseau</a></li>
+				<li><a href="/serveur">Serveur de données</a></li>
+				<li><a href="/support">Support</a></li>
+			</ul>
+		</nav>
+	</header>
+
+	<div id="banner">
+		<div id="banner_description">
+			Bienvenue sur le centre de configuration
+		</div>
+	</div>
+
+
+
+
+<div id="conf_connex">
+	<div id="conf"> 
+	  <h2>Votre configuration</h2>
+	  <p><em>Adresse IP/masque :</em> {{ ip }} / {{ masque }}</p>
+	  <p><em>Adresse réseau :</em> {{ ipR }}</p>
+	  <p><em>Adresse IP du serveur :</em> {{ IPserv }}</p>
+	</div>
+
+	<div id="connex"> 
+	  <h2>Mode de connexion</h2>
+	  <p><em>Vous êtes en</em> ethernet/ wifi<p>
+	</div>
+</div>
+
+<div id="wifi_ethernet_serveur">
+  <div id="wifi">
+    <div class="titre_reseau">WIFI</div>
+    <!--
+    <form method="POST" action="#" >
+      <input type="submit" name="formulaire" value="activer wifi" class="btn"/>
+    </form>
+    -->
+    <form method="POST" action="#">
+      <label for="ssid">SSID</label> <br/>
+          <input type="text" name="ssid" id="ssid" placeholder="MonWifi"/>
+          <br/>
+          <label for="mdp">Mot de passe</label> <br/>
+          <input type="password" name="mdp" id="mdp" placeholder="Mot de passe" />
+          <br/>
+          <input type="submit" name="formulaire" value="Modifier WIFI" class="btn"/>
+    </form>
+  </div>
+
+  <div id="ethernet">
+     <div class="titre_reseau">ETHERNET</div>
+    <!--
+    <form method="POST" action="/reseau">
+      <input type="submit" name="formulaire" value="activer ethernet" class="btn"/>
+    </form>
+	-->
+    <form method="POST" action="/reseau">
+      <label for="adIP">Adresse IP</label> <br/>
+          <input type="text" name="adIP" id="adIP" placeholder="192.168.1.18" maxlength="15"/>
+          <br/>
+          <label for="Masque">Masque</label> <br/>
+          <input type="number" name="masque" id="masque" placeholder="24" min="0" max="25"/>
+          <br/>
+          <label for="route">Route par défaut</label> <br/>
+          <input type="text" name="route" id="route" placeholder="192.168.1.1" maxlength="15"/>
+          <br/>
+          <input type="submit" name="formulaire" value="Modifier Ethernet" class="btn"/>
+    </form>
+  </div>
+
+  <div id="serveur">
+     <div class="titre_reseau">SERVEUR</div>
+    <form method="POST" action="/reseau">
+      <label for="ipserveur">Adresse IP du serveur</label> <br/>
+        <input type="text" name="ipserveur" id="ipserveur" placeholder="192.168.1.50" maxlength="15"/>
+        <br/>
+        <input type="submit" name="formulaire" value="Modifier IP serveur" class="btn"/>
+    </form>
+  </div>
+</div>	
+
+
+
+
+
+	<footer>
+		<div id="bloc_footer">
+			<div id="contact">
+				<h1>Nous contacter</h1>
+				<h2>Les élèves</h2>
+				<ul>
+					<li><a href="mailto:pierre@mail.com"><strong>Module de mesures:</strong> arnault@lacroixrouge-brest.fr</a></li>
+					<li><a href="mailto:flavien@mail.com"><strong>Module de communication:</strong> flav.rsl@hotmail.fr</a></li>
+					<li><a href="mailto:pierre@mail.com"><strong>Module de visualisation:</strong> claquin@lacroixrouge-brest.fr</a></li>
+				</ul>
+				<h2>Le professeur</h2>
+				<ul>
+					<li><a href="mailto:prof@mail.com"><strong>M.Raye:</strong> raye@lacroixrouge-brest.fr</a></li>
+				</ul>
+			</div>
+			<div id="link">
+				<h1>Liens</h1>
+				<ul>
+					<li><a href="https://www.abalonebretagne.com/" target="_blank">Site de France Holiotis</a></li>
+					<li><a href="http://ormeaux.alwaysdata.net/index.php" target="_blank">Consultation des mesures</a></li>
+				</ul>
+			</div>
+		</div>
+	</footer>
+
+	</div>
+</body>
+</html>
