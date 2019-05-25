@@ -4,24 +4,28 @@
 
 {% block accueil %}
 
-<div id="conf"> 
-  <h2>Votre configuration</h2>
-  <p><em>Adresse IP/masque :</em> {{ ip }} / {{ masque }}</p>
-  <p><em>Adresse réseau :</em> {{ ipR }}</p>
-  <p><em>Adresse IP du serveur :</em> {{ IPserv }}</p>
-</div>
+<div id="conf_connex">
+	<div id="conf"> 
+	  <h2>Votre configuration</h2>
+	  <p><em>Adresse IP/masque :</em> {{ ip }} / {{ masque }}</p>
+	  <p><em>Adresse réseau :</em> {{ ipR }}</p>
+	  <p><em>Adresse IP du serveur :</em> {{ IPserv }}</p>
+	</div>
 
-<div id="connex"> 
-  <h2>Mode de connexion</h2>
-  <p><em>Vous êtes en</em> ethernet/wifi</p>
+	<div id="connex"> 
+	  <h2>Mode de connexion</h2>
+	  <p><em>Vous êtes en</em> ethernet/ wifi<p>
+	</div>
 </div>
 
 <div id="wifi_ethernet_serveur">
   <div id="wifi">
-    <h2>WIFI</h2>
+    <div class="titre_reseau">WIFI</div>
+    <!--
     <form method="POST" action="#" >
       <input type="submit" name="formulaire" value="activer wifi" class="btn"/>
     </form>
+    -->
     <form method="POST" action="#">
       <label for="ssid">SSID</label> <br/>
           <input type="text" name="ssid" id="ssid" placeholder="MonWifi"/>
@@ -29,15 +33,17 @@
           <label for="mdp">Mot de passe</label> <br/>
           <input type="password" name="mdp" id="mdp" placeholder="Mot de passe" />
           <br/>
-          <input type="submit" name="formulaire" value="modifier wifi" class="btn"/>
+          <input type="submit" name="formulaire" value="Modifier WIFI" class="btn"/>
     </form>
   </div>
 
   <div id="ethernet">
-    <h2>ETHERNET</h2>
+     <div class="titre_reseau">ETHERNET</div>
+    <!--
     <form method="POST" action="/reseau">
       <input type="submit" name="formulaire" value="activer ethernet" class="btn"/>
     </form>
+	-->
     <form method="POST" action="/reseau">
       <label for="adIP">Adresse IP</label> <br/>
           <input type="text" name="adIP" id="adIP" placeholder="192.168.1.18" maxlength="15"/>
@@ -48,22 +54,20 @@
           <label for="route">Route par défaut</label> <br/>
           <input type="text" name="route" id="route" placeholder="192.168.1.1" maxlength="15"/>
           <br/>
-          <input type="submit" name="formulaire" value="modifier ethernet" class="btn"/>
+          <input type="submit" name="formulaire" value="Modifier Ethernet" class="btn"/>
     </form>
   </div>
 
   <div id="serveur">
-    <h2>SERVEUR</h2>
+     <div class="titre_reseau">SERVEUR</div>
     <form method="POST" action="/reseau">
       <label for="ipserveur">Adresse IP du serveur</label> <br/>
         <input type="text" name="ipserveur" id="ipserveur" placeholder="192.168.1.50" maxlength="15"/>
         <br/>
-        <input type="submit" name="formulaire" value="modifier IP serveur" class="btn"/>
+        <input type="submit" name="formulaire" value="Modifier IP serveur" class="btn"/>
     </form>
   </div>
-</div>
+</div>	
 
 
 {% endblock %}
-
-
