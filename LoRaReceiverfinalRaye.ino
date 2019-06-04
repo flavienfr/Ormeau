@@ -27,9 +27,11 @@ void setup() {
     Serial.println("Starting LoRa failed!");
     while (1);
   }
+  pinMode(LED_BUILTIN, OUTPUT);
 }
 
 void loop() {
+  digitalWrite(LED_BUILTIN, LOW);  
   // try to parse packet
   int packetSize = LoRa.parsePacket();
   if (packetSize) 
@@ -42,6 +44,8 @@ void loop() {
     Serial.print(" bytes : ");
     
     // read packet
+    digitalWrite(LED_BUILTIN, HIGH);  
+    digitalWrite(LED_BUILTIN, LOW);
     while (LoRa.available()) {
       byte b = LoRa.read();
       recv[i]=b;
@@ -59,7 +63,6 @@ void loop() {
         crc += recv[x]>>j & 0x01;
       }
     }
-
     //code de fonction
     if(recv[1]==1/*& recv[packetSize-1] == crc*/)//code fonction (all)
     {
@@ -94,7 +97,7 @@ void loop() {
       snd[2] = byte(crc);
 
       LoRa.beginPacket();
-      LoRa.write(snd,2);
+      LoRa.write(snd,3);
       LoRa.endPacket();
   
       String addchar = String(add);
@@ -102,17 +105,16 @@ void loop() {
       String debitchar = String(debit);
       str = ";1;"+ addchar + ";" + tmpchar + ";" + debitchar;
       Serial1.println(str);
-    }
-    
 
-    //envois valeur à la raspberry réception ok ou valeur
-    if(verification() == 1)
-    {
-      for(int i = 0;verification() == 1 & i<5;i++)//fair en sorte de pouvoir quitter la boucle si trop long.
+          //envois valeur à la raspberry réception ok ou valeur
+      if(verification() == 1)
       {
-        Serial1.println(str);
-        delay(2000);
-      }  
+        for(int i = 0;verification() == 1 & i<5;i++)//fair en sorte de pouvoir quitter la boucle si trop long.
+        {
+          Serial1.println(str);
+          delay(2000);
+        }  
+      }
     }
   }
 }
