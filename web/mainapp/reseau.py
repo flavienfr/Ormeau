@@ -2,7 +2,7 @@
 
 #Configuration statique
 def LireIpStatique() :
-	fichierR = open("/home/pi/ormeau/web/mainapp/dhcptest.conf", "r")
+	fichierR = open("/etc/dhcpcd.conf", "r")
 	contenu = fichierR.read()
 
 	ipdebut = contenu.find("static ip_address=")
@@ -26,7 +26,7 @@ def LireIpStatique() :
 	return (ip, masque, ipdebut, ipfin)
 
 def ChangerIPstatique(newip, newmasque):
-	fichierR = open("/home/pi/ormeau/web/mainapp/dhcptest.conf", "r")
+	fichierR = open("/etc/dhcpcd.conf", "r")
 	contenu = fichierR.read()
 
 	ip, masque, ipdebut, ipfin = LireIpStatique()
@@ -35,12 +35,12 @@ def ChangerIPstatique(newip, newmasque):
 	contenu = contenu.replace(ip, newip)
 
 	fichierR.close()
-	fichierW = open("/home/pi/ormeau/web/mainapp/dhcptest.conf", "w")
+	fichierW = open("/etc/dhcpcd.conf", "w")
 	fichierW.write(contenu)
 	fichierW.close()
 
 def LireIprouters() :
-	fichierR = open("/home/pi/ormeau/web/mainapp/dhcptest.conf", "r")
+	fichierR = open("/etc/dhcpcd.conf", "r")
 	contenu = fichierR.read()
 
 	ipRdebut = contenu.find("static routers=")
@@ -56,14 +56,14 @@ def LireIprouters() :
 	return (ipR, ipRdebut, ipRfin)
 
 def ChangerIProuters(newiprouter):
-	fichierR = open("/home/pi/ormeau/web/mainapp/dhcptest.conf", "r")
+	fichierR = open("/etc/dhcpcd.conf", "r")
 	contenu = fichierR.read()
 
 	ip, ipdebut, ipfin = LireIprouters()
 	contenu = contenu.replace(ip, newiprouter)
 
 	fichierR.close()
-	fichierW = open("/home/pi/ormeau/web/mainapp/dhcptest.conf", "w")
+	fichierW = open("/etc/dhcpcd.conf", "w")
 	fichierW.write(contenu)
 	fichierW.close()
 	
