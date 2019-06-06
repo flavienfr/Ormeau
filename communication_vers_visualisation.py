@@ -1,29 +1,27 @@
-
 import serial
-import mysql.connector 
-import string #enlever ?
+import mysql.connector
 
 ser = serial.Serial('/dev/serial0', 9600)
 
 while True:
 	data = ser.readline()
-	if data[0]==";": 
+	if data[0]==";":
 		print(data)
 		data = data.split(";")
-		if data[1] == "1": #0rien;1fonction;2add;3tmp;4debit
+		if data[1] == "1":
 			fonction = data[1]
 			add = data[2]
 			tmp = data[3]
 			debit = data[4]
 			ser.write([123])
-			#supprimer les print
+			#test affichage
 			print "Save in DB"
 			print "fonction :",fonction
 			print "addresse :",add
 			print "temperature :",tmp
 			print "Debit :",debit
 
-			conn = mysql.connector.connect(host="mysql-ormeaux.alwaysdata.net",user="ormeaux",password="G27&$Ar2", database="ormeaux_29")
+			conn = mysql.connector.connect(host="mysql-ormeaux.alwaysdata.net",user="ormeaux",password="pGYw478Vy", database="ormeaux_29")
 			cursor = conn.cursor()
 			cursor = conn.cursor()
 
