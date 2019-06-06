@@ -1,58 +1,3 @@
-#conf_connex
-{
-	display: flex;
-	justify-content: space-around;
-}
-#connex, #conf
-{
-	max-width: 350px;
-}
-
-#wifi_ethernet_serveur
-{
-	display: flex;
-	justify-content: space-around;
-}
-#wifi, #ethernet, #serveur
-{
-	color: rgb(100,204,252);
-	border: 3px solid black;
-	padding:10px;
-	background-color: black;
-	border-radius: 30px;
-	position: relative;	
-	height: 260px;
-}
-.titre_reseau
-{
-	text-align: center;
-	font-size: 1.7em;
-	margin-bottom: 20px;
-}
-input
-{
-	margin: 3px 0 13px 0;
-}
-.btn
-{
-    box-shadow: none;
-    appearance: none;
-    border: 0;
-    outline: 0;
-	background-color: rgb(4, 193, 61);
-	height: 35px;
-    width: 167px;
-    font-size: 15px;
-    border-radius: 30px;
-    cursor: pointer;
-    position: absolute;
-    bottom: 0px
- }
-
-
-
-
-
 body
 {
 	background: url("/static/img/background-wood.jpg");
@@ -208,6 +153,76 @@ footer a
 	text-decoration: none;
 	color:black;
 }
+/*---------------------Page reseau------------------*/
+#conf_connex
+{
+	display: flex;
+	justify-content: space-around;
+	margin-bottom: 50px;
+}
+#conf_connex span
+{
+	color: white;
+}
+#connex, #conf
+{
+	width: 300px;
+	color: rgb(100,204,252);
+	border: 3px solid black;
+	padding:10px;
+	background-color: black;
+	border-radius: 30px;
+}
+#connex .btn
+{
+	position: relative;
+}
+#connex form,#connex h2
+{
+	display: flex;
+	justify-content: center;
+}
+#wifi_ethernet_serveur
+{
+	display: flex;
+	justify-content: space-around;
+}
+#wifi, #ethernet
+{
+	color: rgb(100,204,252);
+	border: 3px solid black;
+	padding:10px;
+	background-color: black;
+	border-radius: 30px;
+}
+.titre_reseau
+{
+	text-align: center;
+	font-size: 1.7em;
+	margin-bottom: 20px;
+}
+input
+{
+	margin: 3px 0 13px 0;
+}
+.btn
+{
+    box-shadow: none;
+    appearance: none;
+    border: 0;
+    outline: 0;
+	background-color: rgb(4, 193, 61);
+	height: 35px;
+    width: 167px;
+    font-size: 15px;
+    border-radius: 30px;
+    cursor: pointer;
+ }
+ #wifi .btn
+ {
+ 	margin-top: 58px;
+ }
+/*---------------------Page reseau------------------*/
 
 @media all and (max-width: 940px), (max-device-width: 480px)
 {
@@ -260,17 +275,13 @@ footer a
 		font-size: 1.2em;
 	}
 
-
-
-	#wifi_ethernet_serveur
+	#wifi_ethernet_serveur, #conf_connex 
 	{
 		flex-direction: column;
 		align-items: center;
 	}
-	#wifi, #ethernet, #serveur
+	#wifi, #ethernet, #connex, #conf
 	{
-
 		margin: 10px;
-
 	}
 }
