@@ -23,15 +23,14 @@ void setup() {
   LoRa.setPins(csPin, resetPin, irqPin);
   Serial.println("LoRa Receiver");
  
-  if (!LoRa.begin(915E6)) {
+  if (!LoRa.begin(868.2E6)) {
     Serial.println("Starting LoRa failed!");
     while (1);
   }
   pinMode(LED_BUILTIN, OUTPUT);
 }
 
-void loop() {
-  digitalWrite(LED_BUILTIN, LOW);  
+void loop() { 
   // try to parse packet
   int packetSize = LoRa.parsePacket();
   if (packetSize) 
@@ -55,16 +54,16 @@ void loop() {
       i++;
     }
 
-    int crc = 0;
+    int cksm = 0;
     for (int x=0; x < packetSize-1;x++)
     {
       for (int j=0; j<8; j++)
       {
-        crc += recv[x]>>j & 0x01;
+        cksm += recv[x]>>j & 0x01;
       }
     }
     //code de fonction
-    if(recv[1]==1/*& recv[packetSize-1] == crc*/)//code fonction (all)
+    if(recv[1]==1/*& recv[packetSize-1] == cksm*/)//code fonction (0x01)
     {
       add = recv[0];
       tmp = (recv[2]+recv[3]);
@@ -79,22 +78,22 @@ void loop() {
       Serial.println(tmp);
       Serial.print("Debit : ");
       Serial.println(debit);
-      Serial.print("crc calculé: ");
-      Serial.println(crc);
+      Serial.print("cksm calculé: ");
+      Serial.println(cksm);
 
 
-      //réponse positice à pierre
+      //réponse positive au module
       snd[0] = byte(add);
-      snd[1] = byte(1); //-------------> code fontion donné par l'utilisateur sur IHM 
-      int crc = 0;
+      snd[1] = byte(1);
+      int cksm = 0;
       for (int x=0; x < 1;x++)
       {
         for (int j=0; j<8; j++)
         {
-          crc += snd[x]>>j & 0x01;
+          cksm += snd[x]>>j & 0x01;
         }
       }
-      snd[2] = byte(crc);
+      snd[2] = byte(cksm);
 
       LoRa.beginPacket();
       LoRa.write(snd,3);
@@ -106,10 +105,10 @@ void loop() {
       str = ";1;"+ addchar + ";" + tmpchar + ";" + debitchar;
       Serial1.println(str);
 
-          //envois valeur à la raspberry réception ok ou valeur
+      //envoi à la raspberry
       if(verification() == 1)
       {
-        for(int i = 0;verification() == 1 & i<5;i++)//fair en sorte de pouvoir quitter la boucle si trop long.
+        for(int i = 0;verification() == 1 & i<5;i++)
         {
           Serial1.println(str);
           delay(2000);
@@ -132,7 +131,7 @@ int verification()
     Serial.println("Réponse Raspberry");
     return 0;
   }
-  else if(lu == 234)//code à définir si message mauvais
+  else if(lu == 234)//définir message mauvais
   {
     return 1;
   }
