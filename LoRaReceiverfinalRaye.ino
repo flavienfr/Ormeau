@@ -63,7 +63,7 @@ void loop() {
       }
     }
     //code de fonction
-    if(recv[1]==1/*& recv[packetSize-1] == cksm*/)//code fonction (0x01)
+    if(recv[1]==1/*&& recv[packetSize-1] == cksm*/)//code fonction (0x01)
     {
       add = recv[0];
       tmp = (recv[2]+recv[3]);
@@ -86,7 +86,7 @@ void loop() {
       snd[0] = byte(add);
       snd[1] = byte(1);
       int cksm = 0;
-      for (int x=0; x < 1;x++)
+      for (int x=0; x < 2;x++)
       {
         for (int j=0; j<8; j++)
         {
@@ -108,7 +108,7 @@ void loop() {
       //envoi à la raspberry
       if(verification() == 1)
       {
-        for(int i = 0;verification() == 1 & i<5;i++)
+        for(int i = 0;verification() == 1 && i<5;i++)
         {
           Serial1.println(str);
           delay(2000);
